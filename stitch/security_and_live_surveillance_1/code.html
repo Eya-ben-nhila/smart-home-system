@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Security and Live Surveillance - SmartHome Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#197fe6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "surface-dark": "#1a242d",
+                        "border-dark": "#293038",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #111921;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #293038;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #197fe6;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-border-dark flex flex-col bg-white dark:bg-background-dark">
+<div class="p-6 flex items-center gap-3">
+<div class="p-2 bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined block">shield_with_heart</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">SmartHome<span class="text-primary">Pro</span></h1>
+</div>
+<nav class="flex-1 px-4 space-y-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-white bg-primary rounded-xl shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined">videocam</span>
+<span class="font-medium">Surveillance</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-medium">Devices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span class="font-medium">Automation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-surface-dark rounded-xl transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-medium">Activity Logs</span>
+</a>
+</nav>
+<div class="p-4 mt-auto border-t border-slate-200 dark:border-border-dark">
+<button class="w-full flex items-center justify-center gap-2 bg-red-500/10 hover:bg-red-500/20 text-red-500 py-3 rounded-xl transition-all font-bold">
+<span class="material-symbols-outlined text-xl">emergency_home</span>
+                    Panic Button
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Top Navbar -->
+<header class="h-16 border-b border-slate-200 dark:border-border-dark flex items-center justify-between px-8 bg-white dark:bg-background-dark">
+<div class="flex items-center gap-4">
+<h2 class="text-lg font-bold">Security Center</h2>
+<span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+                        System Secured
+                    </span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-64 group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-slate-100 dark:bg-surface-dark border-none rounded-lg pl-10 text-sm focus:ring-2 focus:ring-primary transition-all placeholder:text-slate-500" placeholder="Search devices..." type="text"/>
+</div>
+<div class="flex items-center gap-4 border-l border-slate-200 dark:border-border-dark pl-6">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<div class="size-9 rounded-full bg-primary/10 border-2 border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="User avatar" class="size-full object-cover" data-alt="User profile avatar illustration" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlfviK-F-jlZjrICu5m8Q_QFCsK4u6fG7_Hm5LV-aOHvAGbZbUgCvVl6FCXPlsEVT9DWO3sQlJDjYExQcYm9i6b7LN2Ea0FI5bef_PrqojJH0Wfdsr1ONKzoKzDRH5Eq4w56cKJTXXQm2jjgQADIIrcfzRaAwtVindfu11MHsbGriosn72N9E4JBSL8QLedLmdpc_fPyBXeXJbXgox4UUCPX-sJ_f8eRX5V-K8ms0IRP4uuY3I3_Pj5KF7gC_8a-83T8jxH9ssipU"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Content Scroll Area -->
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar space-y-8">
+<div class="grid grid-cols-12 gap-8">
+<!-- Camera Grid Section (Left) -->
+<div class="col-span-12 xl:col-span-8 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">grid_view</span>
+<h3 class="text-xl font-bold tracking-tight">Live Surveillance</h3>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-xl">fullscreen</span>
+</button>
+<button class="p-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-xl">refresh</span>
+</button>
+</div>
+</div>
+<!-- 2x2 Camera Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Camera 1 -->
+<div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 border-2 border-transparent hover:border-primary transition-all group shadow-xl">
+<img alt="Front Door View" class="size-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Modern home front porch and door security camera view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc7LSVaILskVKdt9XtmizdxnPeuk8pWsCDaQ0yvk7H179Sl-tAC9plZYzqtiM3PI6IQ4HzNf6UbqbxRbbydFXLgwA0jgHhHz_7NmubTI4lo93IKxPjHWf_XxgRaqiJUv_MUKZxTWNU-wDgxv3jL1I9w55PjpEhxCFS0XbNvkif5McoF3b4MNY2h4QB8jUiEdD0zwNNdtAf0GutUoJzf8AMD9PF4pMIkJ7ush9nqAezHRQ98B-vTtffMY9GFajb5ntcnIsy5LpN_ho"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+<div class="absolute top-4 left-4 flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-red-500"></span>
+<span class="text-white text-xs font-bold tracking-widest uppercase">Front Door</span>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">mic</span>
+</button>
+<button class="size-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">photo_camera</span>
+</button>
+</div>
+<div class="absolute top-4 right-4 text-white/60 text-[10px] font-mono">1080P | 24FPS</div>
+</div>
+<!-- Camera 2 -->
+<div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 border-2 border-transparent hover:border-primary transition-all group shadow-xl">
+<img alt="Backyard View" class="size-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Backyard swimming pool and garden security camera view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSq9kUzZTBeazbNoI6XysQ0NSrnSDvhaNDm5gMFLs5tMGCRhUP0S9vsW6TPs0K-VvnhkvJTJp3qpad0A6BWzW_op8nciVP0Nzqb9EI8vQA1vSfjORZhKyzOEdxawjoMcV452_3kbIaNfcO1B2vF0n0qsvUSqQp5vRRzQi2q8EGiJvdv23Ia3kYQtomG06BxFkVbXWescaqDPV2XGd0RvUMgjzur64Px81IdtetCEQXHtZ4U60nPRUOtsM9bIxtuU7MwxGoC6ymk0k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+<div class="absolute top-4 left-4 flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-red-500"></span>
+<span class="text-white text-xs font-bold tracking-widest uppercase">Backyard</span>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">mic</span>
+</button>
+<button class="size-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">photo_camera</span>
+</button>
+</div>
+<div class="absolute top-4 right-4 text-white/60 text-[10px] font-mono">1080P | 22FPS</div>
+</div>
+<!-- Camera 3 -->
+<div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 border-2 border-transparent hover:border-primary transition-all group shadow-xl">
+<img alt="Garage View" class="size-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Modern home interior garage with car security camera view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA47XR8tQdkLINVIOxatKliXmV61ZUZ4J47lBIAtJIkZ_SHUZem0w0tcBDSmjOE_x0WESl_elOe0TWJvg_-Kcmexl_sUJ1PzyXtaoO4uidTX5qzcO7PlglykMPm6kavOE4WV5M6CdmJg5K_AQ5Ntcln0dsAHZPPqfLomOZUWaaz330w9MUpGdo5ptneJVqpK3fz7qTPIhOVcDbYVXWyVxlF9tezpgIhV3Lr7f2ZJLihvvcGqiqMR7Zm_xdY0uQxkbF44uSuKzXFlms"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+<div class="absolute top-4 left-4 flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-red-500"></span>
+<span class="text-white text-xs font-bold tracking-widest uppercase">Garage</span>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="size-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">mic</span>
+</button>
+<button class="size-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">photo_camera</span>
+</button>
+</div>
+<div class="absolute top-4 right-4 text-white/60 text-[10px] font-mono">1080P | 25FPS</div>
+</div>
+<!-- Camera 4 -->
+<div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 border-2 border-primary transition-all group shadow-xl shadow-primary/10">
+<img alt="Living Room View" class="size-full object-cover opacity-100 transition-opacity" data-alt="Cozy modern living room interior security camera view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8J6YiP-H0AsXXKr4ulj8O6OnSFaxKIzTtH9EbegSGG_8xUjvEii6OVqRKbJ1U7aCPLz0qbhFAu4gIc0PjzWoAudqmfrp5bALK1oEXxXgAwgw-kNO6E60cBYvtuWmm9-s4TaT58fgunkglLHYGwb1c5OqL4d721qWqz4G3NUMR1GWH9D0hrNUwD3Ac2EYuXxKJ0sOohAv23WTmDyNBHGRkq_i9C4DwepZdmXuncQ163ijsDXRt_6jfddxzyQVrNs2K-t6fkgEhTU0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40"></div>
+<div class="absolute top-4 left-4 flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
+<span class="text-white text-xs font-bold tracking-widest uppercase">Living Room</span>
+</div>
+<div class="absolute bottom-4 left-4 flex gap-3 opacity-100">
+<button class="size-8 rounded-full bg-primary flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined text-lg">mic</span>
+</button>
+<button class="size-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-lg">photo_camera</span>
+</button>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="bg-primary/20 backdrop-blur-md text-primary text-[10px] font-bold px-2 py-1 rounded border border-primary/30 uppercase">Active Stream</span>
+</div>
+<div class="absolute top-4 right-4 text-white/60 text-[10px] font-mono">1080P | 30FPS</div>
+</div>
+</div>
+</div>
+<!-- Right Controls Section -->
+<div class="col-span-12 xl:col-span-4 space-y-6">
+<!-- Security Control Card -->
+<div class="bg-white dark:bg-surface-dark rounded-2xl p-6 border border-slate-200 dark:border-border-dark shadow-xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">lock_open</span>
+<div>
+<h4 class="font-bold text-lg">Alarm Control</h4>
+<p class="text-slate-500 text-xs">Manage system state</p>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-2 border-primary bg-primary/5 text-primary transition-all">
+<span class="material-symbols-outlined">shield</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Stay</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-2 border-slate-200 dark:border-border-dark hover:border-slate-300 dark:hover:border-slate-600 transition-all">
+<span class="material-symbols-outlined">security</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Away</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-2 border-slate-200 dark:border-border-dark hover:border-slate-300 dark:hover:border-slate-600 transition-all">
+<span class="material-symbols-outlined">lock_open</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Disarm</span>
+</button>
+</div>
+<div class="mt-6 p-4 bg-slate-100 dark:bg-background-dark/50 rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-500">verified_user</span>
+<div>
+<p class="text-xs font-bold uppercase text-slate-500">Current Status</p>
+<p class="text-sm font-bold">Home (Armed)</p>
+</div>
+</div>
+<button class="text-primary text-xs font-bold hover:underline">Settings</button>
+</div>
+</div>
+<!-- Recent Activity Log -->
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-border-dark shadow-xl flex flex-col h-[320px]">
+<div class="p-6 border-b border-slate-200 dark:border-border-dark flex items-center justify-between">
+<h4 class="font-bold">Recent Alerts</h4>
+<span class="size-5 bg-primary text-white text-[10px] rounded-full flex items-center justify-center font-bold">12</span>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-2">
+<div class="space-y-1">
+<div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-background-dark/30 transition-colors group">
+<div class="size-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500 shrink-0">
+<span class="material-symbols-outlined">person_pin_circle</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold truncate">Person detected</p>
+<p class="text-xs text-slate-500">Front Door • 2m ago</p>
+</div>
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-primary">
+<span class="material-symbols-outlined text-lg">play_circle</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-background-dark/30 transition-colors group">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">door_open</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold truncate">Garage door opened</p>
+<p class="text-xs text-slate-500">Main Garage • 14m ago</p>
+</div>
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-primary">
+<span class="material-symbols-outlined text-lg">info</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-background-dark/30 transition-colors group">
+<div class="size-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-500 shrink-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold truncate">Unknown motion detected</p>
+<p class="text-xs text-slate-500">Backyard • 1h ago</p>
+</div>
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-primary">
+<span class="material-symbols-outlined text-lg">play_circle</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-background-dark/30 transition-colors group">
+<div class="size-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
+<span class="material-symbols-outlined">power_settings_new</span>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-sm font-bold truncate">System Disarmed</p>
+<p class="text-xs text-slate-500">By User: Felix • 2h ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Event Clips Timeline -->
+<div class="col-span-12 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">history_toggle_off</span>
+<h3 class="text-xl font-bold tracking-tight">Recorded Event Clips</h3>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold text-slate-500">Filter: All Events</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">tune</span>
+</div>
+</div>
+<!-- Timeline Scroll -->
+<div class="flex gap-4 overflow-x-auto pb-6 custom-scrollbar scroll-smooth">
+<!-- Clip 1 -->
+<div class="flex-none w-64 space-y-3 group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all">
+<img alt="Clip thumbnail" class="size-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all" data-alt="Abstract living room security clip thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdMFHDVBHD5Ln62R4am_hygfTN1fgnGlB59jr2IQyDFOnrwzMvtweOQ-fVJMAZ3pSm07WpT4eNYzJUS4lCAAEy4vyurMVXiBe1VGzc6hQAa_6oe5erGaGzFq6VqOc-wmYoydCCP3InD7Yg3bmoz-JXXKa0RMeLKayWub08s1xg4dxsCqbiXc85WrxZV8zpAaIBkokcNUZmCXeiB-e5FdMtsFABEuzdp_McGZA3icwYUYGVrZfdlLVu9vOiuKXKKOyiFQbkYAkTQW8"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl opacity-60 group-hover:opacity-100 transition-opacity">play_circle</span>
+</div>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white">00:15</div>
+</div>
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Package Delivered</p>
+<p class="text-xs text-slate-500">Front Door • 08:42 AM</p>
+</div>
+</div>
+<!-- Clip 2 -->
+<div class="flex-none w-64 space-y-3 group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all">
+<img alt="Clip thumbnail" class="size-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all" data-alt="Abstract garage security clip thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBvIMRlhH2m_VRcREci-LwgDWNnWn_gXnUY4G3aeGg_gRZBj6mhSQP4RnVmMRBPz3MKmcxJrfRFOkCUiWIhhVBD43FCiAW9xwA7B4IgKMHnqNThUnmyWlXL1pNgDxQ2bQE28jQOx4n-2W4dzF9CCquBAApKtaU_yGitJ9JYg0v-Jt4CqsQO1_fzKsvMNY-f8eZ5AJz-b0YGls4oa7dPwoVEk7tYpbt-T1FRKTZMFtQDcDotEgWxyD91nl3GlmUv2_P2HlUFnjkdNk"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl opacity-60 group-hover:opacity-100 transition-opacity">play_circle</span>
+</div>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white">00:42</div>
+</div>
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Vehicle Arrival</p>
+<p class="text-xs text-slate-500">Main Garage • 07:15 AM</p>
+</div>
+</div>
+<!-- Clip 3 -->
+<div class="flex-none w-64 space-y-3 group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all">
+<img alt="Clip thumbnail" class="size-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all" data-alt="Abstract backyard security clip thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOP1YzgLp4VEGRvKUIeVKW3NNPcoM-GkQFQbNpe385pmfbaA3jlpPECoXn1KBAQWCzJF-5Y1wuAgmhE5en4jXz8oFQZLjdOVfFSagvmhuze9U2CAvqoKIDgaeDaXprvhpO0y5OsLcpPtBXK8Yz4qWrHu5uCzwZMRrsISlJg_hcwImY1U_OhD7E0cOfgkTLpvwApWB0H56nwnQIzKyOhMYkrBLjBWLr1uRmMIUHEOLCgihbVo2J6rdNPyyHXDp3W06YHuiBQuwi9EY"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl opacity-60 group-hover:opacity-100 transition-opacity">play_circle</span>
+</div>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white">01:05</div>
+</div>
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Animal Detected</p>
+<p class="text-xs text-slate-500">Backyard • 04:30 AM</p>
+</div>
+</div>
+<!-- Clip 4 -->
+<div class="flex-none w-64 space-y-3 group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all">
+<img alt="Clip thumbnail" class="size-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all" data-alt="Abstract entryway security clip thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAyeS4Zb_OtJ227Mb6nfc2eIbBQvmraqLI24lOVyL7cVyqqRjEybID_yrQnr4YpirbEJ-xYZXmJKpGiwPhZVmHoSNKF0TOfa7Ztp4Zf_0GMj1CIAQ8h6fGptRlxtmMqQRFSgkT6IfshbMroFIQslM9uYHQPF0NsK2PIOaU1_IngVB1Wunfl5TLBU3e8CRqm9CgASidpWOM6DsuAFXqUbkXg8GVficPxtM6oyKYFJAurJlVcT4ypCSBPtIPNf6umABLU9eZmebWQCo"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl opacity-60 group-hover:opacity-100 transition-opacity">play_circle</span>
+</div>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white">00:28</div>
+</div>
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Motion: Porch Lights</p>
+<p class="text-xs text-slate-500">Front Door • Yesterday</p>
+</div>
+</div>
+<!-- Clip 5 -->
+<div class="flex-none w-64 space-y-3 group cursor-pointer">
+<div class="relative aspect-video rounded-xl overflow-hidden border-2 border-transparent group-hover:border-primary transition-all">
+<img alt="Clip thumbnail" class="size-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all" data-alt="Abstract interior security clip thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHA9Sl9FiyeBOKu_5wB1SyNO2F5TuQS303C4K9noulySFKdXY4DZ_GwxLjTad8-NXqNIVHga8u07wAQ5MEk682jvnIljVbtkgkky8cXXSNH_RcxnH8VeeiOAAdAkvp7NQDbJm8_-SA1P3ONZXNkrQNHgVVzR2FYA-Gf2IvnW0nyhBLZNrka6GeGItsfR8I7yS41dlrQuvL1aJqnqxsAmB3YiAmdfkLZKxVZ2LuZmNpvrAlfqCMf0v6JyooxiyAsskTTZgIG3zae2Q"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-3xl opacity-60 group-hover:opacity-100 transition-opacity">play_circle</span>
+</div>
+<div class="absolute bottom-2 left-2 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white">02:10</div>
+</div>
+<div>
+<p class="text-sm font-bold group-hover:text-primary transition-colors">Night Schedule Active</p>
+<p class="text-xs text-slate-500">System • Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Quick Stats -->
+<footer class="h-12 border-t border-slate-200 dark:border-border-dark bg-white dark:bg-background-dark px-8 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-slate-500">
+<div class="flex gap-6">
+<span class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-emerald-500"></span> 4 Cameras Active</span>
+<span class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-primary"></span> Cloud Recording On</span>
+<span class="flex items-center gap-1.5 text-orange-500"><span class="material-symbols-outlined text-sm">storage</span> 82% Disk Usage</span>
+</div>
+<div class="flex gap-4 items-center">
+<span>IP Address: 192.168.1.104</span>
+<span class="bg-slate-100 dark:bg-surface-dark px-2 py-0.5 rounded border border-slate-200 dark:border-border-dark">Encrypted Connection</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

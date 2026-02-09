@@ -1,0 +1,239 @@
+<div class="flex h-screen overflow-hidden bg-background-light dark:bg-background-dark">
+  <!-- Sidebar -->
+  <aside class="w-72 bg-[#111418] border-r border-slate-800 flex flex-col justify-between p-6">
+    <div class="flex flex-col gap-8">
+      <!-- Profile Section -->
+      <div class="flex gap-3 items-center">
+        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 ring-2 ring-primary/20" 
+             style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB-ZCiV4bGKkTD-mvTbTQw2oZORDBOePQhYHP6SKRpQZOJqaH0fKZPQK3JGz6lLoXxVX3R1m1TZHP8Ce4btqwt4GkEw31Hd_xyEE-141FSVnZf8Sa647wUuwZxZJS4avJwRN_eBrn04JZClWObY3wXL7GETLknRJxYocG2C-5k0ar2WFgN1-DuxJQf8o-vrkooa11lMP2Iy1CoOBmr0p8uKUn3T79tu_j5ncEO1GX5kmn_lor4_C2eOkzxIboZMnvLoaoCfyCQd6SE");'></div>
+        <div class="flex flex-col">
+          <h1 class="text-white text-base font-semibold leading-tight">Alex Sterling</h1>
+          <p class="text-slate-400 text-xs font-normal">Admin Account</p>
+        </div>
+      </div>
+      
+      <!-- Navigation -->
+      <nav class="flex flex-col gap-2">
+        <a routerLink="/dashboard" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span class="text-sm font-medium">Dashboard</span>
+        </a>
+        <a routerLink="/devices" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all">
+          <span class="material-symbols-outlined">memory</span>
+          <span class="text-sm font-medium">Devices</span>
+        </a>
+        <a routerLink="/alerts" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20">
+          <span class="material-symbols-outlined">notifications_active</span>
+          <span class="text-sm font-medium">Alerts</span>
+        </a>
+        <a routerLink="/security" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all">
+          <span class="material-symbols-outlined">history</span>
+          <span class="text-sm font-medium">History</span>
+        </a>
+        <a routerLink="/profile" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all">
+          <span class="material-symbols-outlined">settings</span>
+          <span class="text-sm font-medium">Settings</span>
+        </a>
+      </nav>
+    </div>
+    
+    <!-- Sidebar Footer -->
+    <div class="bg-slate-800/30 p-4 rounded-xl">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs text-slate-400 uppercase tracking-wider">System Status</span>
+        <span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
+      </div>
+      <p class="text-sm text-white font-medium">All systems online</p>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 flex flex-col overflow-hidden">
+    <!-- Header Section -->
+    <header class="flex flex-wrap items-center justify-between gap-4 p-8 bg-background-light dark:bg-background-dark/50 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex flex-col gap-1">
+        <h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Alerts & Notifications</h2>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">Monitor real-time updates from your smart home network.</p>
+      </div>
+      <div class="flex gap-3">
+        <button class="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+          <span class="material-symbols-outlined text-lg">done_all</span>
+          Mark all as read
+        </button>
+        <button class="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition-colors shadow-md shadow-primary/10">
+          <span class="material-symbols-outlined text-lg">tune</span>
+          Configure
+        </button>
+      </div>
+    </header>
+
+    <!-- Filters Section -->
+    <div class="px-8 py-4 bg-background-light dark:bg-background-dark flex items-center justify-between">
+      <div class="flex p-1 bg-slate-200 dark:bg-slate-800 rounded-xl w-fit">
+        <button (click)="selectFilter('all')" 
+                [class]="selectedFilter === 'all' ? 'px-6 py-2 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm font-bold shadow-sm' : 'px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-700 dark:hover:text-slate-200'">
+          All <span class="ml-2 text-xs opacity-50">{{ alertSummary.critical + alertSummary.warnings + alertSummary.info }}</span>
+        </button>
+        <button (click)="selectFilter('critical')" 
+                [class]="selectedFilter === 'critical' ? 'px-6 py-2 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm font-bold shadow-sm' : 'px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-700 dark:hover:text-slate-200'">
+          Critical <span class="ml-2 text-xs opacity-50">{{ alertSummary.critical }}</span>
+        </button>
+        <button (click)="selectFilter('warning')" 
+                [class]="selectedFilter === 'warning' ? 'px-6 py-2 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm font-bold shadow-sm' : 'px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-700 dark:hover:text-slate-200'">
+          Warning <span class="ml-2 text-xs opacity-50">{{ alertSummary.warnings }}</span>
+        </button>
+        <button (click)="selectFilter('info')" 
+                [class]="selectedFilter === 'info' ? 'px-6 py-2 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm font-bold shadow-sm' : 'px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-700 dark:hover:text-slate-200'">
+          Info <span class="ml-2 text-xs opacity-50">{{ alertSummary.info }}</span>
+        </button>
+      </div>
+      <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+        <span class="material-symbols-outlined text-lg">history</span>
+        Sorted by: Newest first
+      </div>
+    </div>
+
+    <!-- Scrollable List -->
+    <div class="flex-1 overflow-y-auto px-8 pb-8 custom-scrollbar">
+      <div class="max-w-5xl mx-auto flex flex-col gap-4 mt-4">
+        <!-- CRITICAL ALERTS -->
+        <div *ngIf="selectedFilter === 'all' || selectedFilter === 'critical'" class="flex items-center gap-2 mb-2">
+          <span class="h-2 w-2 rounded-full bg-critical animate-pulse"></span>
+          <h3 class="text-xs font-bold uppercase tracking-widest text-critical">Critical Security</h3>
+        </div>
+        
+        <div *ngFor="let alert of criticalAlerts" 
+             class="group relative bg-white dark:bg-slate-800/40 rounded-2xl p-5 border-l-4 border-critical shadow-sm hover:shadow-md transition-all border border-slate-100 dark:border-slate-800/60">
+          <div class="flex items-start gap-5">
+            <div class="flex-shrink-0 size-12 rounded-xl bg-critical/10 flex items-center justify-center text-critical">
+              <span class="material-symbols-outlined text-2xl">{{ alert.icon }}</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between mb-1">
+                <h4 class="font-bold text-slate-900 dark:text-white">{{ alert.title }}</h4>
+                <span class="text-xs text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">{{ alert.time }}</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" [innerHTML]="alert.description"></p>
+              <div class="flex gap-2">
+                <button *ngFor="let action of alert.actions" 
+                        [class]="action.includes('View') || action.includes('Emergency') ? 'px-4 py-1.5 rounded-lg bg-critical text-white text-xs font-bold hover:bg-red-600 transition-colors' : 'px-4 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors'">
+                  {{ action }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WARNING ALERTS -->
+        <div *ngIf="selectedFilter === 'all' || selectedFilter === 'warning'" class="flex items-center gap-2 mt-6 mb-2">
+          <span class="h-2 w-2 rounded-full bg-warning"></span>
+          <h3 class="text-xs font-bold uppercase tracking-widest text-warning">System Warnings</h3>
+        </div>
+        
+        <div *ngFor="let alert of warningAlerts" 
+             class="group relative bg-white dark:bg-slate-800/40 rounded-2xl p-5 border-l-4 border-warning shadow-sm border border-slate-100 dark:border-slate-800/60 opacity-90 hover:opacity-100">
+          <div class="flex items-start gap-5">
+            <div class="flex-shrink-0 size-12 rounded-xl bg-warning/10 flex items-center justify-center text-warning">
+              <span class="material-symbols-outlined text-2xl">{{ alert.icon }}</span>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between mb-1">
+                <h4 class="font-bold text-slate-900 dark:text-white">{{ alert.title }}</h4>
+                <span class="text-xs text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">{{ alert.time }}</span>
+              </div>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4" [innerHTML]="alert.description"></p>
+              <div class="flex gap-2">
+                <button class="px-4 py-1.5 rounded-lg bg-warning text-white text-xs font-bold hover:bg-amber-600 transition-colors">
+                  Emergency Protocol
+                </button>
+                <button class="px-4 py-1.5 rounded-lg bg-warning text-white text-xs font-bold hover:bg-amber-600 transition-colors">
+                  Mute Alarm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO ALERTS -->
+        <div *ngIf="selectedFilter === 'all' || selectedFilter === 'info'" class="flex items-center gap-2 mt-6 mb-2">
+          <span class="h-2 w-2 rounded-full bg-info"></span>
+          <h3 class="text-xs font-bold uppercase tracking-widest text-info">Activity Feed</h3>
+        </div>
+        
+        <div *ngFor="let alert of infoAlerts" 
+             class="group relative bg-white dark:bg-slate-800/40 rounded-2xl p-5 border-l-4 border-info shadow-sm border border-slate-100 dark:border-slate-800/60 opacity-90 hover:opacity-100">
+          <div class="flex items-start gap-5">
+            <div class="flex-shrink-0 size-12 rounded-xl bg-info/10 flex items-center justify-center text-info">
+              <span class="material-symbols-outlined text-2xl">{{ alert.icon }}</span>
+            </div>
+            <div class="flex-1">
+              <h4 class="font-bold text-slate-900 dark:text-white">{{ alert.title }}</h4>
+              <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">{{ alert.description }}</p>
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-slate-500 dark:text-slate-400">{{ alert.time }}</span>
+                <button class="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-800 hover:underline" (click)="dismissAlert(alert.id)">
+                  Dismiss
+                </button>
+              </div>
+              <div class="flex gap-2">
+                <button class="px-4 py-1.5 rounded-lg bg-warning text-white text-xs font-bold hover:bg-amber-600 transition-colors">
+                  Emergency Protocol
+                </button>
+                <button class="px-4 py-1.5 rounded-lg bg-warning text-white text-xs font-bold hover:bg-amber-600 transition-colors">
+                  Mute Alarm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Right Side Stats Panel -->
+  <aside class="w-80 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 p-8 hidden xl:flex flex-col gap-8">
+    <div>
+      <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Alert Summary</h3>
+      <div class="space-y-4">
+        <div class="flex items-center justify-between p-4 bg-red-50 dark:bg-red-900/10 rounded-xl border border-red-100 dark:border-red-900/20">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-critical">error</span>
+            <span class="text-sm font-semibold text-red-900 dark:text-red-400">Critical</span>
+          </div>
+          <span class="text-xl font-black text-red-900 dark:text-red-400">{{ alertSummary.critical }}</span>
+        </div>
+        <div class="flex items-center justify-between p-4 bg-amber-50 dark:bg-amber-900/10 rounded-xl border border-amber-100 dark:border-amber-900/20">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-warning">warning</span>
+            <span class="text-sm font-semibold text-amber-900 dark:text-amber-400">Warnings</span>
+          </div>
+          <span class="text-xl font-black text-amber-900 dark:text-amber-400">{{ alertSummary.warnings }}</span>
+        </div>
+        <div class="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-900/10 rounded-xl border border-blue-100 dark:border-blue-900/20">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-info">info</span>
+            <span class="text-sm font-semibold text-blue-900 dark:text-blue-400">Total Info</span>
+          </div>
+          <span class="text-xl font-black text-blue-900 dark:text-blue-400">{{ alertSummary.info }}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bg-primary/5 rounded-2xl p-6 border border-primary/20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="material-symbols-outlined text-primary">security</span>
+        <h4 class="font-bold text-slate-900 dark:text-white">Security Score</h4>
+      </div>
+      <div class="flex items-center justify-center mb-4">
+        <div class="relative flex items-center justify-center size-32">
+          <svg class="size-full" viewBox="0 0 36 36">
+            <path class="text-slate-200 dark:text-slate-800" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+            <path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" [attr.stroke-dasharray]="securityScore + ', 100'" stroke-linecap="round" stroke-width="3"></path>
+          </svg>
+          <span class="absolute text-2xl font-black text-slate-900 dark:text-white">{{ securityScore }}%</span>
+        </div>
+      </div>
+      <p class="text-xs text-center text-slate-500 dark:text-slate-400">Address the critical alerts to increase your home security score.</p>
+    </div>
+  </aside>
+</div>

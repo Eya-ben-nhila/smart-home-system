@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Home Dashboard Standardized</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#197fe6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#0f141a",
+                        "card-dark": "#1a242d",
+                        "border-light": "#e2e8f0",
+                        "border-dark": "#1e293b"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .nav-item-active {
+            @apply bg-primary text-white shadow-md shadow-primary/20;
+        }
+        .nav-item-inactive {
+            @apply text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex overflow-hidden">
+<aside class="w-64 border-r border-border-light dark:border-border-dark flex flex-col h-screen bg-white dark:bg-background-dark sticky top-0 shrink-0">
+<div class="p-8 flex items-center gap-3">
+<div class="size-9 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-xl">home_iot_device</span>
+</div>
+<span class="text-xl font-bold tracking-tight">Nestly.</span>
+</div>
+<nav class="flex-1 px-4 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl nav-item-active" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl nav-item-inactive" href="#">
+<span class="material-symbols-outlined">devices</span>
+<span class="font-medium">Devices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl nav-item-inactive" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-medium">Automations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl nav-item-inactive" href="#">
+<span class="material-symbols-outlined">shield_with_heart</span>
+<span class="font-medium">Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl nav-item-inactive" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span class="font-medium">Energy</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl nav-item-inactive" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-medium">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl nav-item-inactive" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-6 border-t border-border-light dark:border-border-dark mt-auto">
+<div class="flex items-center gap-3">
+<img alt="Profile" class="size-10 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJxi8uzmPiWMwd_M5ZMlNHbd6f4AkdcBXV1PZhu9eetimfy2E9AxHLhOHduqBBozpIGSitAdkw_YEMUOyFQMuIOIZB87LgOt6CGFm-Bm3ggTwW1oP0NFHpPkFDmQWPOqaLR7ULtBqLyA9o8Z_7ZP9QLJX-y1ZLOTkNJwmmxLjbRR__Rn99ww2gFao1RLBU5jE388GJhf299Qskfc8itc1mDrc6URicSE45iCwePIyMAgXHNI1BWjceifHNWSZYuA2DFmjyb8XEj54"/>
+<div class="overflow-hidden">
+<p class="text-sm font-semibold truncate">Alex Johnson</p>
+<p class="text-xs text-slate-500 truncate">Premium Home</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 h-screen overflow-y-auto bg-background-light dark:bg-background-dark">
+<div class="max-w-7xl mx-auto p-8 lg:p-12">
+<header class="flex flex-wrap items-end justify-between gap-6 mb-12">
+<div class="space-y-1">
+<h1 class="text-3xl lg:text-4xl font-bold tracking-tight">Welcome Home, Alex</h1>
+<p class="text-slate-500 flex items-center gap-2 font-medium">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                        Friday, Oct 24 • 
+                        <span class="material-symbols-outlined text-sm">wb_sunny</span>
+                        72°F Clear Skies
+                    </p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-3 px-5 py-2.5 bg-white dark:bg-card-dark rounded-full border border-border-light dark:border-border-dark shadow-sm">
+<span class="size-2 rounded-full bg-green-500"></span>
+<span class="text-sm font-semibold">System Secure</span>
+</div>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-border-light dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">thermostat</span>
+</div>
+<span class="text-green-500 text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 1%
+                        </span>
+</div>
+<p class="text-slate-500 text-sm font-medium mb-1">Indoor Temperature</p>
+<h2 class="text-4xl font-bold tracking-tighter">72<span class="text-xl text-slate-400">°F</span></h2>
+</div>
+<div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-border-light dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div class="p-2 bg-orange-500/10 rounded-lg text-orange-500">
+<span class="material-symbols-outlined">wb_sunny</span>
+</div>
+<span class="text-slate-400 text-sm font-medium uppercase tracking-wider">Outdoor</span>
+</div>
+<p class="text-slate-500 text-sm font-medium mb-1">Outdoor Temperature</p>
+<h2 class="text-4xl font-bold tracking-tighter">65<span class="text-xl text-slate-400">°F</span></h2>
+</div>
+<div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-border-light dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-start mb-6">
+<div class="p-2 bg-blue-400/10 rounded-lg text-blue-400">
+<span class="material-symbols-outlined">humidity_percentage</span>
+</div>
+<span class="text-red-500 text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">arrow_downward</span> 2%
+                        </span>
+</div>
+<p class="text-slate-500 text-sm font-medium mb-1">Relative Humidity</p>
+<h2 class="text-4xl font-bold tracking-tighter">45<span class="text-xl text-slate-400">%</span></h2>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+<div class="lg:col-span-2 space-y-12">
+<section>
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold">Quick Controls</h3>
+<button class="text-sm text-primary font-bold hover:underline underline-offset-4">Browse Devices</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+<div class="p-6 bg-primary rounded-3xl text-white shadow-xl shadow-primary/20 cursor-pointer">
+<div class="flex justify-between items-start mb-10">
+<div class="size-12 bg-white/20 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">lightbulb</span>
+</div>
+<div class="w-12 h-6 bg-white/30 rounded-full relative">
+<div class="absolute right-1 top-1 size-4 bg-white rounded-full"></div>
+</div>
+</div>
+<h4 class="font-bold text-lg">Living Room</h4>
+<p class="text-white/80 text-sm">Lights • 80%</p>
+</div>
+<div class="p-6 bg-white dark:bg-card-dark rounded-3xl border border-border-light dark:border-border-dark shadow-sm hover:border-primary/40 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-10">
+<div class="size-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">air</span>
+</div>
+<div class="w-12 h-6 bg-slate-200 dark:bg-slate-700 rounded-full relative">
+<div class="absolute left-1 top-1 size-4 bg-white dark:bg-slate-500 rounded-full"></div>
+</div>
+</div>
+<h4 class="font-bold text-lg">Kitchen AC</h4>
+<p class="text-slate-500 text-sm">Standby</p>
+</div>
+<div class="p-6 bg-white dark:bg-card-dark rounded-3xl border border-border-light dark:border-border-dark shadow-sm hover:border-primary/40 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-10">
+<div class="size-12 bg-slate-100 dark:bg-slate-800 rounded-xl flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">heat_pump</span>
+</div>
+<div class="w-12 h-6 bg-slate-200 dark:bg-slate-700 rounded-full relative">
+<div class="absolute left-1 top-1 size-4 bg-white dark:bg-slate-500 rounded-full"></div>
+</div>
+</div>
+<h4 class="font-bold text-lg">Bedroom Heater</h4>
+<p class="text-slate-500 text-sm">Off</p>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-2xl font-bold mb-8">Smart Scenes</h3>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-5 bg-white dark:bg-card-dark border border-border-light dark:border-border-dark rounded-2xl flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-orange-400 text-2xl">wb_twilight</span>
+<span class="font-bold">Morning Routine</span>
+</button>
+<button class="px-8 py-5 bg-white dark:bg-card-dark border border-border-light dark:border-border-dark rounded-2xl flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-indigo-400 text-2xl">bedtime</span>
+<span class="font-bold">Good Night</span>
+</button>
+<button class="px-8 py-5 bg-white dark:bg-card-dark border border-border-light dark:border-border-dark rounded-2xl flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-primary text-2xl">movie</span>
+<span class="font-bold">Movie Night</span>
+</button>
+</div>
+</section>
+</div>
+<div class="space-y-10">
+<section>
+<h3 class="text-2xl font-bold mb-8">Security</h3>
+<div class="bg-white dark:bg-card-dark rounded-3xl overflow-hidden border border-border-light dark:border-border-dark shadow-sm">
+<div class="relative group">
+<img alt="Front Door" class="w-full aspect-video object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWRGDyE0gJ80B12jWUuuGVLBqJMWUM9l-jW1eJny4Plogf7wW40C1o_fquU-UhBOpAU1B-9cgDQ8-bt6bkhZ7ZfuDZkAobc0eQp_ErD_SIHSOs6CPL-ydigLTcEv96yw5JYU88GLl_e_C6CGFKYeWEsAVXCOzVF1kF5m2ROWXlk--J5hI7P9i0VWN1TEM0mJid0kIhkFlkvmJp2XaJz84AbA_hXBwOA7neeGdYxWow0AkVAZukDLKCQvDkRu7u-Shzr1aOWWe3X3c"/>
+<div class="absolute top-4 left-4 flex items-center gap-2 bg-red-500 text-white text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded">
+<span class="size-1.5 rounded-full bg-white"></span>
+                                    Live
+                                </div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all cursor-pointer backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+</div>
+</div>
+<div class="p-5 flex items-center justify-between">
+<div>
+<h4 class="font-bold">Front Door Cam</h4>
+<p class="text-xs text-slate-500 font-medium">Last motion: 2m ago</p>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full">
+<span class="material-symbols-outlined text-slate-400">open_in_full</span>
+</button>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-2xl font-bold mb-8">Energy Consumption</h3>
+<div class="space-y-4">
+<div class="p-5 bg-white dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="size-12 bg-blue-50 dark:bg-blue-900/20 text-blue-500 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">tv</span>
+</div>
+<div>
+<p class="font-bold text-sm">Smart TV</p>
+<p class="text-xs text-slate-500">Living Room</p>
+</div>
+</div>
+<p class="text-sm font-bold text-primary">0.4 kWh</p>
+</div>
+<div class="p-5 bg-white dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="size-12 bg-green-50 dark:bg-green-900/20 text-green-500 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">kitchen</span>
+</div>
+<div>
+<p class="font-bold text-sm">Refrigerator</p>
+<p class="text-xs text-slate-500">Kitchen Main</p>
+</div>
+</div>
+<p class="text-sm font-bold text-primary">1.2 kWh</p>
+</div>
+<div class="p-5 bg-white dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="size-12 bg-purple-50 dark:bg-purple-900/20 text-purple-500 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">speaker</span>
+</div>
+<div>
+<p class="font-bold text-sm">HomePod Mini</p>
+<p class="text-xs text-slate-500">Office</p>
+</div>
+</div>
+<p class="text-sm font-bold text-primary">0.1 kWh</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

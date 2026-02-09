@@ -1,0 +1,213 @@
+<div class="flex h-screen overflow-hidden bg-background-light dark:bg-background-dark">
+  <!-- Sidebar Navigation -->
+  <aside class="w-64 border-r border-slate-200 dark:border-slate-800 flex flex-col h-screen bg-white dark:bg-background-dark">
+    <div class="p-6 flex items-center gap-3">
+      <div class="size-10 bg-primary rounded-xl flex items-center justify-center text-white">
+        <span class="material-symbols-outlined">home_iot_device</span>
+      </div>
+      <span class="text-xl font-bold tracking-tight">Nestly.</span>
+    </div>
+    <nav class="flex-1 px-4 py-4 space-y-2">
+      <a routerLink="/dashboard" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-medium">
+        <span class="material-symbols-outlined">dashboard</span>
+        Dashboard
+      </a>
+      <a routerLink="/devices" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+        <span class="material-symbols-outlined">devices</span>
+        Devices
+      </a>
+      <a routerLink="/security" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+        <span class="material-symbols-outlined">shield_with_heart</span>
+        Security
+      </a>
+      <a routerLink="/energy" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+        <span class="material-symbols-outlined">bolt</span>
+        Energy
+      </a>
+      <a routerLink="/automations" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+        <span class="material-symbols-outlined">auto_awesome</span>
+        Automations
+      </a>
+    </nav>
+    <div class="p-4 mt-auto">
+      <div class="p-4 bg-slate-100 dark:bg-card-dark rounded-2xl flex items-center gap-3">
+        <img alt="Profile" class="size-10 rounded-full bg-slate-200" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJxi8uzmPiWMwd_M5ZMlNHbd6f4AkdcBXV1PZhu9eetimfy2E9AxHLhOHduqBBozpIGSitAdkw_YEMUOyFQMuIOIZB87LgOt6CGFm-Bm3ggTwW1oP0NFHpPkFDmQWPOqaLR7ULtBqLyA9o8Z_7ZP9QLJX-y1ZLOTkNJwmmxLjbRR__Rn99ww2gFao1RLBU5jE388GJhf299Qskfc8itc1mDrc6URicSE45iCwePIyMAgXHNI1BWjceifHNWSZYuA2DFmjyb8XEj54"/>
+        <div class="overflow-hidden">
+          <p class="text-sm font-semibold truncate">Alex Johnson</p>
+          <p class="text-xs text-slate-500 truncate">Pro Plan</p>
+        </div>
+        <button class="ml-auto text-slate-400 hover:text-primary">
+          <span class="material-symbols-outlined text-xl">settings</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 h-screen overflow-y-auto bg-background-light dark:bg-background-dark p-8">
+    <!-- Top Bar -->
+    <header class="flex flex-wrap items-end justify-between gap-4 mb-8">
+      <div class="space-y-1">
+        <h1 class="text-3xl font-bold tracking-tight">Welcome Home, Alex</h1>
+        <p class="text-slate-500 flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">calendar_today</span>
+          Friday, Oct 24 • 
+          <span class="material-symbols-outlined text-sm">wb_sunny</span>
+          72°F Clear Skies
+        </p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-card-dark rounded-full border border-slate-200 dark:border-slate-800 shadow-sm">
+          <span class="size-2 rounded-full bg-green-500 animate-pulse"></span>
+          <span class="text-sm font-medium">All systems online</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <!-- Indoor Temp -->
+      <div class="relative overflow-hidden bg-white dark:bg-card-dark p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm group">
+        <div class="absolute -right-4 -top-4 size-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors"></div>
+        <div class="flex justify-between items-start mb-4">
+          <p class="text-slate-500 font-medium">Indoor Temp</p>
+          <span class="material-symbols-outlined text-primary">thermostat</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <h2 class="text-5xl font-bold tracking-tighter">{{ indoorTemp }}<span class="text-2xl text-slate-400">°F</span></h2>
+          <span class="text-green-500 text-sm font-bold flex items-center">
+            <span class="material-symbols-outlined text-sm">arrow_upward</span>
+            1%
+          </span>
+        </div>
+        <div class="mt-4 h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div class="h-full bg-primary w-3/4"></div>
+        </div>
+      </div>
+
+      <!-- Outdoor Temp -->
+      <div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="flex justify-between items-start mb-4">
+          <p class="text-slate-500 font-medium">Outdoor Temp</p>
+          <span class="material-symbols-outlined text-orange-500">wb_sunny</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <h2 class="text-5xl font-bold tracking-tighter">{{ outdoorTemp }}<span class="text-2xl text-slate-400">°F</span></h2>
+          <span class="text-slate-400 text-sm font-medium">Stable</span>
+        </div>
+        <div class="mt-4 h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div class="h-full bg-orange-500 w-1/2"></div>
+        </div>
+      </div>
+
+      <!-- Humidity -->
+      <div class="bg-white dark:bg-card-dark p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="flex justify-between items-start mb-4">
+          <p class="text-slate-500 font-medium">Humidity</p>
+          <span class="material-symbols-outlined text-blue-400">humidity_percentage</span>
+        </div>
+        <div class="flex items-baseline gap-2">
+          <h2 class="text-5xl font-bold tracking-tighter">{{ humidity }}<span class="text-2xl text-slate-400">%</span></h2>
+          <span class="text-red-500 text-sm font-bold flex items-center">
+            <span class="material-symbols-outlined text-sm">arrow_downward</span>
+            2%
+          </span>
+        </div>
+        <div class="mt-4 h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div class="h-full bg-blue-400" [style.width.%]="humidity"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Left Side: Controls -->
+      <div class="lg:col-span-2 space-y-8">
+        <div>
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">Quick Controls</h3>
+            <button class="text-sm text-primary font-medium hover:underline">Manage Hub</button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            <!-- Device Cards -->
+            <div *ngFor="let device of devices" 
+                 [ngClass]="device.active ? 'p-5 bg-primary rounded-2xl text-white shadow-lg shadow-primary/20 transition-transform active:scale-95 cursor-pointer' : 'p-5 bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-primary/50 transition-all cursor-pointer'">
+              <div class="flex justify-between items-start mb-8">
+                <div [ngClass]="device.active ? 'size-10 bg-white/20 rounded-lg flex items-center justify-center' : 'size-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center text-slate-400'">
+                  <span class="material-symbols-outlined" [style.font-variation-settings]="'FILL' 1, 'wght' 400">{{ device.icon }}</span>
+                </div>
+                <div class="w-10 h-5 rounded-full relative" 
+                     [ngClass]="device.active ? 'bg-white/30' : 'bg-slate-200 dark:bg-slate-700'">
+                  <div class="absolute size-4 bg-white rounded-full" 
+                       [ngClass]="device.active ? 'right-0.5' : 'left-0.5'"></div>
+                </div>
+              </div>
+              <h4 class="font-bold">{{ device.name }}</h4>
+              <p [ngClass]="device.active ? 'text-white/80 text-sm' : 'text-slate-500 text-sm'">
+                {{ device.status }}{{ device.intensity > 0 ? ' • ' + device.intensity + '%' : '' }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scene Shortcuts -->
+        <div>
+          <h3 class="text-xl font-bold mb-6">Smart Scenes</h3>
+          <div class="flex flex-wrap gap-4">
+            <button *ngFor="let scene of scenes" 
+                    class="px-6 py-4 bg-white dark:bg-card-dark border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors shadow-sm">
+              <span class="material-symbols-outlined" [class]="scene.color">{{ scene.icon }}</span>
+              <span class="font-medium">{{ scene.name }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side: Security & Analytics -->
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-xl font-bold mb-6">Security at a Glance</h3>
+          <div class="bg-white dark:bg-card-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="relative group">
+              <img alt="Front Door" class="w-full aspect-video object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWRGDyE0gJ80B12jWUuuGVLBqJMWUM9l-jW1eJny4Plogf7wW40C1o_fquU-UhBOpAU1B-9cgDQ8-bt6bkhZ7ZfuDZkAobc0eQp_ErD_SIHSOs6CPL-ydigLTcEv96yw5JYU88GLl_e_C6CGFKYeWEsAVXCOzVF1kF5m2ROWXlk--J5hI7P9i0VWN1TEM0mJid0kIhkFlkvmJp2XaJz84AbA_hXBwOA7neeGdYxWow0AkVAZukDLKCQvDkRu7u-Shzr1aOWWe3X3c"/>
+              <div class="absolute top-4 left-4 flex items-center gap-2 bg-red-500/80 backdrop-blur-sm text-white text-[10px] uppercase tracking-widest font-bold px-2 py-1 rounded">
+                <span class="size-1.5 rounded-full bg-white animate-pulse"></span>
+                Live
+              </div>
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer">
+                <span class="material-symbols-outlined text-white text-5xl">play_circle</span>
+              </div>
+            </div>
+            <div class="p-4 flex items-center justify-between">
+              <div>
+                <h4 class="font-semibold text-sm">Front Door Camera</h4>
+                <p class="text-xs text-slate-500">Last activity 2m ago</p>
+              </div>
+              <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+                <span class="material-symbols-outlined text-slate-400">more_vert</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold mb-6">Active Devices</h3>
+          <div class="space-y-3">
+            <div *ngFor="let device of activeDevices" 
+                 class="p-4 bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between shadow-sm">
+              <div class="flex items-center gap-3">
+                <div class="size-10 rounded-lg flex items-center justify-center" [ngClass]="device.color">
+                  <span class="material-symbols-outlined">{{ device.icon }}</span>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold">{{ device.name }}</p>
+                  <p class="text-xs text-slate-500">{{ device.location }}</p>
+                </div>
+              </div>
+              <p class="text-sm font-bold text-primary">{{ device.consumption }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

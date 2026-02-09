@@ -1,0 +1,197 @@
+<div class="flex h-screen bg-slate-50 dark:bg-slate-900">
+  <!-- Sidebar -->
+  <nav class="w-20 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col items-center py-6 space-y-8">
+    <div class="text-blue-600 font-bold text-2xl">SH</div>
+    
+    <div class="flex flex-col space-y-6">
+      <a routerLink="/dashboard" class="p-3 rounded-xl text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+        <span class="material-symbols-outlined text-2xl">dashboard</span>
+      </a>
+      <a routerLink="/alerts" class="p-3 rounded-xl text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+        <span class="material-symbols-outlined text-2xl">notifications</span>
+      </a>
+      <a routerLink="/devices" class="p-3 rounded-xl text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+        <span class="material-symbols-outlined text-2xl">devices</span>
+      </a>
+      <a routerLink="/energy" class="p-3 rounded-xl text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+        <span class="material-symbols-outlined text-2xl">bolt</span>
+      </a>
+      <a routerLink="/security" class="p-3 rounded-xl text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+        <span class="material-symbols-outlined text-2xl">security</span>
+      </a>
+      <a routerLink="/automations" class="p-3 rounded-xl text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+        <span class="material-symbols-outlined text-2xl">smart_toy</span>
+      </a>
+      <a routerLink="/profile" class="p-3 rounded-xl text-slate-600 dark:text-slate-400 hover:text-blue-600 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+        <span class="material-symbols-outlined text-2xl">person</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-1 overflow-hidden">
+    <!-- Top Bar -->
+    <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-8 py-4 flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Welcome back, Alex</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+          <span class="material-symbols-outlined">search</span>
+        </button>
+        <button class="p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors relative">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+        </button>
+        <div class="flex items-center gap-3">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJxi8uzmPiWMwd_M5ZMlNHbd6f4AkdcBXV1PZhu9eetimfy2E9AxHLhOHduqBBozpIGSitAdkw_YEMUOyFQMuIOIZB87LgOt6CGFm-Bm3ggTwW1oP0NFHpPkFDmQWPOqaLR7ULtBqLyA9o8Z_7ZP9QLJX-y1ZLOTkNJwmmxLjbRR__Rn99ww2gFao1RLBU5jE388GJhf299Qskfc8itc1mDrc6URicSE45iCwePIyMAgXHNI1BWjceifHNWSZYuA2DFmjyb8XEj54" 
+               alt="User Avatar" 
+               class="w-10 h-10 rounded-full object-cover">
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="p-8 overflow-y-auto h-full custom-scrollbar">
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+              <span class="material-symbols-outlined text-blue-600 text-xl">thermostat</span>
+            </div>
+            <span class="text-xs text-slate-500 dark:text-slate-400">Indoor</span>
+          </div>
+          <div class="text-3xl font-bold text-slate-900 dark:text-white">{{ indoorTemp }}°</div>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Temperature</div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+              <span class="material-symbols-outlined text-green-600 text-xl">water_drop</span>
+            </div>
+            <span class="text-xs text-slate-500 dark:text-slate-400">Current</span>
+          </div>
+          <div class="text-3xl font-bold text-slate-900 dark:text-white">{{ humidity }}%</div>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Humidity</div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+              <span class="material-symbols-outlined text-orange-600 text-xl">devices</span>
+            </div>
+            <span class="text-xs text-slate-500 dark:text-slate-400">Active</span>
+          </div>
+          <div class="text-3xl font-bold text-slate-900 dark:text-white">{{ devices.length }}</div>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Devices</div>
+        </div>
+
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+              <span class="material-symbols-outlined text-purple-600 text-xl">security</span>
+            </div>
+            <span class="text-xs text-slate-500 dark:text-slate-400">Status</span>
+          </div>
+          <div class="text-3xl font-bold text-slate-900 dark:text-white">Safe</div>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Security</div>
+        </div>
+      </div>
+
+      <!-- Quick Controls -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <!-- Smart Scenes -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Smart Scenes</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <button *ngFor="let scene of scenes" 
+                    class="bg-gradient-to-br from-orange-400 to-orange-600 text-white rounded-xl p-4 text-left hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-2xl mb-2">{{ scene.icon }}</span>
+              <div class="font-semibold">{{ scene.name }}</div>
+              <div class="text-xs opacity-90">{{ scene.schedule }}</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Active Devices -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Active Devices</h3>
+          <div class="space-y-4">
+            <div *ngFor="let device of activeDevices" 
+                 class="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-700 rounded-xl">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <span class="material-symbols-outlined text-blue-600">{{ device.icon }}</span>
+                </div>
+                <div>
+                  <div class="font-medium text-slate-900 dark:text-white">{{ device.name }}</div>
+                  <div class="text-xs text-slate-500 dark:text-slate-400">{{ device.status }}</div>
+                </div>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" [checked]="device.active" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security Overview -->
+      <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Security at a Glance</h3>
+          <button class="text-blue-600 text-sm font-medium hover:underline">View All</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div *ngFor="let camera of cameras" class="text-center">
+            <div class="relative aspect-video rounded-xl overflow-hidden mb-4">
+              <img [src]="camera.image" [alt]="camera.name" class="w-full h-full object-cover">
+              <div class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">{{ camera.status }}</div>
+            </div>
+            <div class="font-medium text-slate-900 dark:text-white">{{ camera.name }}</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">{{ camera.location }}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Sections -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Energy Overview -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Energy Overview</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-slate-600 dark:text-slate-400">Current Usage</span>
+              <span class="text-xl font-bold text-slate-900 dark:text-white">2.4 kW</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-slate-600 dark:text-slate-400">Solar Generation</span>
+              <span class="text-xl font-bold text-green-600">1.8 kW</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-slate-600 dark:text-slate-400">Battery Level</span>
+              <span class="text-xl font-bold text-blue-600">88%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weather Widget -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm">
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Weather</h3>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-slate-900 dark:text-white mb-2">{{ outdoorTemp }}°</div>
+            <div class="text-sm text-slate-600 dark:text-slate-400">Outdoor Temperature</div>
+            <div class="mt-4 text-slate-500 dark:text-slate-400">
+              <span class="material-symbols-outlined text-3xl">wb_sunny</span>
+              <p class="text-xs mt-2">Partly Cloudy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

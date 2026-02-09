@@ -1,0 +1,38 @@
+// Automations specific styles
+.scene-card {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.automation-card {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateX(4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.toggle-switch {
+  transition: background-color 0.3s ease;
+  
+  .toggle-handle {
+    transition: transform 0.3s ease;
+  }
+}
+
+.tab-button {
+  transition: all 0.2s ease;
+}
+
+.scene-icon {
+  transition: all 0.2s ease;
+}
+
+.scene-card:hover .scene-icon {
+  transform: scale(1.1);
+}

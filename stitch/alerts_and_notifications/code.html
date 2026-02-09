@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alerts and Notifications - SmartHome Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#197fe6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "critical": "#ef4444",
+                        "warning": "#f59e0b",
+                        "info": "#197fe6",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #293038;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-72 bg-[#111418] border-r border-slate-800 flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<!-- Profile Section -->
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 ring-2 ring-primary/20" data-alt="User profile picture showing a smiling man" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB-ZCiV4bGKkTD-mvTbTQw2oZORDBOePQhYHP6SKRpQZOJqaH0fKZPQK3JGz6lLoXxVX3R1m1TZHP8Ce4btqwt4GkEw31Hd_xyEE-141FSVnZf8Sa647wUuwZxZJS4avJwRN_eBrn04JZClWObY3wXL7GETLknRJxYocG2C-5k0ar2WFgN1-DuxJQf8o-vrkooa11lMP2Iy1CoOBmr0p8uKUn3T79tu_j5ncEO1GX5kmn_lor4_C2eOkzxIboZMnvLoaoCfyCQd6SE");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-semibold leading-tight">Alex Sterling</h1>
+<p class="text-slate-400 text-xs font-normal">Admin Account</p>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all" href="#">
+<span class="material-symbols-outlined">memory</span>
+<span class="text-sm font-medium">Devices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="text-sm font-medium">Alerts</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-sm font-medium">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/50 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="bg-slate-800/30 p-4 rounded-xl">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs text-slate-400 uppercase tracking-wider">System Status</span>
+<span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
+</div>
+<p class="text-sm text-white font-medium">All systems online</p>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header Section -->
+<header class="flex flex-wrap items-center justify-between gap-4 p-8 bg-background-light dark:bg-background-dark/50 border-b border-slate-200 dark:border-slate-800">
+<div class="flex flex-col gap-1">
+<h2 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Alerts &amp; Notifications</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Monitor real-time updates from your smart home network.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-lg">done_all</span>
+                        Mark all as read
+                    </button>
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition-colors shadow-md shadow-primary/10">
+<span class="material-symbols-outlined text-lg">tune</span>
+                        Configure
+                    </button>
+</div>
+</header>
+<!-- Filters Section -->
+<div class="px-8 py-4 bg-background-light dark:bg-background-dark flex items-center justify-between">
+<div class="flex p-1 bg-slate-200 dark:bg-slate-800 rounded-xl w-fit">
+<button class="px-6 py-2 rounded-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm font-bold shadow-sm">All <span class="ml-2 text-xs opacity-50">12</span></button>
+<button class="px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-700 dark:hover:text-slate-200">Critical <span class="ml-2 text-xs opacity-50">3</span></button>
+<button class="px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-700 dark:hover:text-slate-200">Warning <span class="ml-2 text-xs opacity-50">4</span></button>
+<button class="px-6 py-2 rounded-lg text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-slate-700 dark:hover:text-slate-200">Info <span class="ml-2 text-xs opacity-50">5</span></button>
+</div>
+<div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-lg">history</span>
+                    Sorted by: Newest first
+                </div>
+</div>
+<!-- Scrollable List -->
+<div class="flex-1 overflow-y-auto px-8 pb-8 custom-scrollbar">
+<div class="max-w-5xl mx-auto flex flex-col gap-4 mt-4">
+<!-- CRITICAL ALERTS -->
+<div class="flex items-center gap-2 mb-2">
+<span class="h-2 w-2 rounded-full bg-critical animate-pulse"></span>
+<h3 class="text-xs font-bold uppercase tracking-widest text-critical">Critical Security</h3>
+</div>
+<!-- Notification Card: Critical -->
+<div class="group relative bg-white dark:bg-slate-800/40 rounded-2xl p-5 border-l-4 border-critical shadow-sm hover:shadow-md transition-all border border-slate-100 dark:border-slate-800/60">
+<div class="flex items-start gap-5">
+<div class="flex-shrink-0 size-12 rounded-xl bg-critical/10 flex items-center justify-center text-critical">
+<span class="material-symbols-outlined text-2xl">emergency_home</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-slate-900 dark:text-white">Motion Detected - Backyard</h4>
+<span class="text-xs text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">2 mins ago</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                    High-intensity motion detected by the <span class="text-slate-900 dark:text-slate-200 font-medium">Rear Terrace Camera</span>. Person identified near the perimeter.
+                                </p>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-lg bg-critical text-white text-xs font-bold hover:bg-red-600 transition-colors">View Live Feed</button>
+<button class="px-4 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-slate-800/40 rounded-2xl p-5 border-l-4 border-critical shadow-sm hover:shadow-md transition-all border border-slate-100 dark:border-slate-800/60">
+<div class="flex items-start gap-5">
+<div class="flex-shrink-0 size-12 rounded-xl bg-critical/10 flex items-center justify-center text-critical">
+<span class="material-symbols-outlined text-2xl">detector_smoke</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-slate-900 dark:text-white">CO Detector Alert - Kitchen</h4>
+<span class="text-xs text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">12 mins ago</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                    Carbon Monoxide levels rising. Air purifier has been set to maximum.
+                                </p>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-lg bg-critical text-white text-xs font-bold hover:bg-red-600 transition-colors">Emergency Protocol</button>
+<button class="px-4 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Mute Alarm</button>
+</div>
+</div>
+</div>
+</div>
+<!-- WARNING ALERTS -->
+<div class="flex items-center gap-2 mt-6 mb-2">
+<span class="h-2 w-2 rounded-full bg-warning"></span>
+<h3 class="text-xs font-bold uppercase tracking-widest text-warning">System Warnings</h3>
+</div>
+<!-- Notification Card: Warning -->
+<div class="group relative bg-white dark:bg-slate-800/40 rounded-2xl p-5 border-l-4 border-warning shadow-sm border border-slate-100 dark:border-slate-800/60 opacity-90 hover:opacity-100">
+<div class="flex items-start gap-5">
+<div class="flex-shrink-0 size-12 rounded-xl bg-warning/10 flex items-center justify-center text-warning">
+<span class="material-symbols-outlined text-2xl">battery_alert</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-slate-900 dark:text-white">Low Battery - Front Door Lock</h4>
+<span class="text-xs text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">1 hour ago</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                    Battery level is at <span class="font-bold">8%</span>. Please replace CR123A batteries soon to avoid lockout.
+                                </p>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-lg bg-warning text-white text-xs font-bold hover:bg-amber-600 transition-colors">Order Batteries</button>
+<button class="px-4 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Snooze</button>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-slate-800/40 rounded-2xl p-5 border-l-4 border-warning shadow-sm border border-slate-100 dark:border-slate-800/60 opacity-90 hover:opacity-100">
+<div class="flex items-start gap-5">
+<div class="flex-shrink-0 size-12 rounded-xl bg-warning/10 flex items-center justify-center text-warning">
+<span class="material-symbols-outlined text-2xl">cloud_off</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-slate-900 dark:text-white">Device Offline - Garage Thermostat</h4>
+<span class="text-xs text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">3 hours ago</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                    Connection lost. This may be due to a local Wi-Fi outage or device power failure.
+                                </p>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-lg bg-warning text-white text-xs font-bold hover:bg-amber-600 transition-colors">Troubleshoot</button>
+</div>
+</div>
+</div>
+</div>
+<!-- INFO ALERTS -->
+<div class="flex items-center gap-2 mt-6 mb-2">
+<span class="h-2 w-2 rounded-full bg-info"></span>
+<h3 class="text-xs font-bold uppercase tracking-widest text-info">Activity Feed</h3>
+</div>
+<!-- Notification Card: Info -->
+<div class="group relative bg-white dark:bg-slate-800/40 rounded-2xl p-5 border-l-4 border-info shadow-sm border border-slate-100 dark:border-slate-800/60 opacity-80 hover:opacity-100">
+<div class="flex items-start gap-5">
+<div class="flex-shrink-0 size-12 rounded-xl bg-info/10 flex items-center justify-center text-info">
+<span class="material-symbols-outlined text-2xl">cleaning_services</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-slate-900 dark:text-white">Vacuuming Completed</h4>
+<span class="text-xs text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">5 hours ago</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                    "Dusty" has finished cleaning the <span class="font-medium">First Floor</span> and is returning to base. 120m² covered.
+                                </p>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">View Report</button>
+</div>
+</div>
+</div>
+</div>
+<div class="group relative bg-white dark:bg-slate-800/40 rounded-2xl p-5 border-l-4 border-info shadow-sm border border-slate-100 dark:border-slate-800/60 opacity-80 hover:opacity-100">
+<div class="flex items-start gap-5">
+<div class="flex-shrink-0 size-12 rounded-xl bg-info/10 flex items-center justify-center text-info">
+<span class="material-symbols-outlined text-2xl">sprinkler</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<h4 class="font-bold text-slate-900 dark:text-white">Smart Watering Active</h4>
+<span class="text-xs text-slate-400 font-medium bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">6 hours ago</span>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                                    Scheduled watering started for Zone 2 (Flower beds) based on local soil moisture.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Side Stats Panel -->
+<aside class="w-80 bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 p-8 hidden xl:flex flex-col gap-8">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-6">Alert Summary</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-red-50 dark:bg-red-900/10 rounded-xl border border-red-100 dark:border-red-900/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-critical">error</span>
+<span class="text-sm font-semibold text-red-900 dark:text-red-400">Critical</span>
+</div>
+<span class="text-xl font-black text-red-900 dark:text-red-400">02</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-amber-50 dark:bg-amber-900/10 rounded-xl border border-amber-100 dark:border-amber-900/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-warning">warning</span>
+<span class="text-sm font-semibold text-amber-900 dark:text-amber-400">Warnings</span>
+</div>
+<span class="text-xl font-black text-amber-900 dark:text-amber-400">04</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-blue-50 dark:bg-blue-900/10 rounded-xl border border-blue-100 dark:border-blue-900/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-info">info</span>
+<span class="text-sm font-semibold text-blue-900 dark:text-blue-400">Total Info</span>
+</div>
+<span class="text-xl font-black text-blue-900 dark:text-blue-400">06</span>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 rounded-2xl p-6 border border-primary/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">security</span>
+<h4 class="font-bold text-slate-900 dark:text-white">Security Score</h4>
+</div>
+<div class="flex items-center justify-center mb-4">
+<div class="relative flex items-center justify-center size-32">
+<svg class="size-full" viewbox="0 0 36 36">
+<path class="text-slate-200 dark:text-slate-800" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="85, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<span class="absolute text-2xl font-black text-slate-900 dark:text-white">85%</span>
+</div>
+</div>
+<p class="text-xs text-center text-slate-500 dark:text-slate-400">Address the critical alerts to increase your home security score.</p>
+</div>
+</aside>
+</div>
+</body></html>

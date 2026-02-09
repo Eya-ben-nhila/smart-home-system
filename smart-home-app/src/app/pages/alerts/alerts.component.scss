@@ -1,0 +1,31 @@
+// Alerts specific styles
+:root {
+  --critical: #ef4444;
+  --warning: #f59e0b;
+  --info: #197fe6;
+}
+
+.alert-card {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateX(4px);
+  }
+}
+
+.filter-button {
+  transition: all 0.2s ease;
+}
+
+.security-score-ring {
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.alert-summary-card {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Device Settings and Management - SmartHome Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#197fe6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply font-display;
+            }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #293038;
+            border-radius: 10px;
+        }
+        .card-glow:hover {
+            box-shadow: 0 0 15px rgba(25, 127, 230, 0.2);
+            border-color: #197fe6;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<header class="flex h-16 items-center justify-between border-b border-solid border-slate-200 dark:border-[#293038] px-6 bg-white dark:bg-background-dark shrink-0 z-50">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined">home_iot_device</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">SmartHome Pro</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4 items-center">
+<label class="hidden sm:flex flex-col min-w-40 h-9 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 flex border-none bg-slate-100 dark:bg-[#293038] items-center justify-center pl-3 rounded-l-lg">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-[#293038] focus:ring-0 h-full placeholder:text-slate-400 px-3 rounded-r-lg text-sm font-normal" placeholder="Search devices..."/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 border-2 border-primary" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzXdOkIHrJRNZF1xhVn4xsgp7C758qW6fUn76fUcsbNAstH1SnP1D6NLQitXBw-3E6H_gzAfgnPAE4u_GBowLVHc83PUShkiiJjHMjN9GfOugSywUeIc9AvgmbonwovDig9qI2h5AY0ENofm4R0lsZzMVPEIzhq2fK17AToCSkADyYoyuSCwKE1JpvIh1g6IJIQqVEvWjdPN8UmfKpTlYeUV4uiyroxRrJbaKu430INsE1u7h5eVHlyNhU4Lk1gEelJ5A6TTZ2oV0");'></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-64 flex flex-col border-r border-slate-200 dark:border-[#293038] bg-white dark:bg-background-dark shrink-0">
+<nav class="flex-1 flex flex-col gap-1 p-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1a2129] transition-all font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary text-white font-semibold shadow-lg shadow-primary/20" href="#">
+<span class="material-symbols-outlined">devices</span>
+<span>Devices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1a2129] transition-all font-medium" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span>Automations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1a2129] transition-all font-medium" href="#">
+<span class="material-symbols-outlined">security</span>
+<span>Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1a2129] transition-all font-medium" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span>Energy</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1a2129] transition-all font-medium" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span>Notifications</span>
+</a>
+<div class="mt-auto pt-4 border-t border-slate-100 dark:border-[#293038]">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1a2129] transition-all font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</nav>
+</aside>
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-background-light dark:bg-[#0d1218]">
+<div class="p-6 lg:p-10 max-w-7xl mx-auto flex flex-col gap-10">
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-tight">Devices</h1>
+<p class="text-slate-500 dark:text-slate-400 text-lg">Manage and monitor 12 active devices across 3 rooms.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-slate-200 dark:bg-[#293038] text-slate-900 dark:text-white text-sm font-bold hover:bg-slate-300 dark:hover:bg-[#38424d] transition-colors">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>Run Routine</span>
+</button>
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary text-white text-sm font-bold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>Add Device</span>
+</button>
+</div>
+</div>
+<section>
+<div class="flex items-center gap-4 mb-6">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">Living Room</h2>
+<div class="h-px flex-1 bg-slate-200 dark:bg-[#293038]"></div>
+<span class="text-[10px] font-bold text-slate-400 bg-slate-100 dark:bg-[#293038] px-2 py-1 rounded">5 DEVICES</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-[#1a2129] border border-slate-200 dark:border-[#293038] rounded-xl p-4 card-glow transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">videocam</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="flex items-center gap-1 text-[10px] font-bold text-green-500 mb-1">
+<span class="size-1.5 rounded-full bg-green-500"></span>
+                                            LIVE
+                                        </span>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+</div>
+<div class="aspect-video w-full rounded-lg overflow-hidden relative mb-3 bg-slate-100 dark:bg-[#111921]">
+<div class="absolute inset-0 bg-cover bg-center opacity-80" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBt8qz7oxQahrxwBRMqKAY3jheYdBTsHBIUa6ooViYFH2JVijkVg14iV1BiyU9AfvfBWdUAvvTXvzZw8Enw4cL1QzgW-yroNex4nc961Waxgvp5FR_OVEp4bfQsIRwZ3N91tg-JmssjdX1SZWuryPBA8Ws77WPS7eyB7A8GekDnVAuLu3pYIjFWwRJXE1cGZJHV_nz3oe1yCwrKU666adFp2gnflEmLw91E1U_suLzBykFykHf_jlU7kDuklVYXDmc7GD0z5LctOBQ')"></div>
+<div class="absolute bottom-2 left-2 bg-black/50 backdrop-blur-md px-2 py-1 rounded text-[10px] text-white">4K HDR</div>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Smart Eye Camera</h3>
+<div class="flex justify-between items-center mt-2">
+<p class="text-xs text-slate-500">Online - Recording</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-400">battery_full</span>
+<span class="text-[10px] font-bold text-slate-400">92%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2129] border border-slate-200 dark:border-[#293038] rounded-xl p-4 card-glow transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-500">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-5 rounded-full bg-primary relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 size-4 rounded-full bg-white shadow-sm"></div>
+</div>
+<button class="text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Main Chandelier</h3>
+<p class="text-xs text-slate-500 mt-1">Status: On • 75% Intensity</p>
+</div>
+<div class="w-full h-1.5 bg-slate-100 dark:bg-[#111921] rounded-full overflow-hidden">
+<div class="h-full bg-yellow-400 w-3/4"></div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2129] border border-slate-200 dark:border-[#293038] rounded-xl p-4 card-glow transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">tv</span>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-slate-900 dark:text-white">Living Room TV</h3>
+<p class="text-xs text-slate-500">Currently Playing: Netflix</p>
+<div class="flex items-center gap-2 mt-3">
+<div class="px-2 py-1 rounded bg-slate-100 dark:bg-[#111921] text-[10px] font-bold text-primary">POWER ON</div>
+<div class="px-2 py-1 rounded bg-slate-100 dark:bg-[#111921] text-[10px] font-bold text-slate-400">HDMI 1</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2129] border border-slate-200 dark:border-[#293038] rounded-xl p-4 card-glow transition-all cursor-pointer ring-2 ring-primary ring-opacity-50">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined">thermostat</span>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-slate-900 dark:text-white">Main AC Unit</h3>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="text-2xl font-black text-slate-900 dark:text-white">22°C</span>
+<span class="text-xs text-slate-500">Set to 20°C</span>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-[16px] text-orange-400">heat_pump</span>
+<span class="text-[10px] font-bold text-orange-400 uppercase tracking-widest">Heating</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center gap-4 mb-6">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold tracking-tight">Kitchen</h2>
+<div class="h-px flex-1 bg-slate-200 dark:bg-[#293038]"></div>
+<span class="text-[10px] font-bold text-slate-400 bg-slate-100 dark:bg-[#293038] px-2 py-1 rounded">3 DEVICES</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<div class="bg-white dark:bg-[#1a2129] border border-slate-200 dark:border-[#293038] rounded-xl p-4 card-glow transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined">kitchen</span>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-bold text-slate-900 dark:text-white">Smart Fridge</h3>
+<div class="grid grid-cols-2 gap-2 mt-2">
+<div class="bg-slate-100 dark:bg-[#111921] p-2 rounded">
+<p class="text-[8px] font-bold text-slate-400 uppercase">Fridge</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">3°C</p>
+</div>
+<div class="bg-slate-100 dark:bg-[#111921] p-2 rounded">
+<p class="text-[8px] font-bold text-slate-400 uppercase">Freezer</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">-18°C</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2129] border border-slate-200 dark:border-[#293038] rounded-xl p-4 card-glow transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 rounded-lg bg-amber-700/10 flex items-center justify-center text-amber-700">
+<span class="material-symbols-outlined">coffee_maker</span>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Espresso Master</h3>
+<p class="text-xs text-slate-500 mt-1">Ready to brew</p>
+<button class="w-full mt-4 py-2 bg-amber-700/20 text-amber-700 text-xs font-bold rounded-lg border border-amber-700/30 hover:bg-amber-700/30 transition-colors">BREW NOW</button>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a2129] border border-slate-200 dark:border-[#293038] rounded-xl p-4 card-glow transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="size-10 rounded-lg bg-slate-100 dark:bg-[#111921] flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-10 h-5 rounded-full bg-slate-300 dark:bg-[#293038] relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 size-4 rounded-full bg-white shadow-sm"></div>
+</div>
+<button class="text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Counter Lights</h3>
+<p class="text-xs text-slate-500 mt-1">Status: Off</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<aside class="w-[380px] hidden 2xl:flex flex-col border-l border-slate-200 dark:border-[#293038] bg-white dark:bg-background-dark shrink-0">
+<div class="p-8 flex flex-col h-full overflow-y-auto custom-scrollbar">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Device Control</h2>
+<button class="size-8 flex items-center justify-center rounded-lg hover:bg-slate-100 dark:hover:bg-[#293038]">
+<span class="material-symbols-outlined text-slate-400">close</span>
+</button>
+</div>
+<div class="flex flex-col items-center gap-10">
+<div class="relative size-64 flex items-center justify-center">
+<svg class="size-full transform -rotate-90">
+<circle class="text-slate-100 dark:text-[#1a2129]" cx="128" cy="128" fill="transparent" r="110" stroke="currentColor" stroke-width="12"></circle>
+<circle cx="128" cy="128" fill="transparent" r="110" stroke="#197fe6" stroke-dasharray="690" stroke-dashoffset="300" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Current</span>
+<span class="text-6xl font-black text-slate-900 dark:text-white">22°</span>
+<div class="flex items-center gap-1 mt-2 text-primary">
+<span class="material-symbols-outlined text-sm">water_drop</span>
+<span class="text-xs font-bold">45% Humidity</span>
+</div>
+</div>
+<div class="absolute size-6 bg-white border-4 border-primary rounded-full shadow-lg" style="transform: rotate(35deg) translate(110px) rotate(-35deg);"></div>
+</div>
+<div class="w-full flex flex-col gap-8">
+<div class="flex justify-between items-center bg-slate-100 dark:bg-[#1a2129] p-4 rounded-xl">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-400 uppercase">Target Temp</span>
+<span class="text-2xl font-bold text-slate-900 dark:text-white">20.5°C</span>
+</div>
+<div class="flex gap-2">
+<button class="size-10 rounded-lg bg-white dark:bg-[#293038] flex items-center justify-center border border-slate-200 dark:border-transparent text-slate-900 dark:text-white shadow-sm">-</button>
+<button class="size-10 rounded-lg bg-white dark:bg-[#293038] flex items-center justify-center border border-slate-200 dark:border-transparent text-slate-900 dark:text-white shadow-sm">+</button>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white">Fan Speed</h4>
+<div class="flex gap-2">
+<button class="flex-1 py-3 rounded-lg bg-primary text-white text-xs font-bold uppercase tracking-wider">Auto</button>
+<button class="flex-1 py-3 rounded-lg bg-slate-100 dark:bg-[#1a2129] text-slate-500 text-xs font-bold uppercase tracking-wider">Low</button>
+<button class="flex-1 py-3 rounded-lg bg-slate-100 dark:bg-[#1a2129] text-slate-500 text-xs font-bold uppercase tracking-wider">Med</button>
+<button class="flex-1 py-3 rounded-lg bg-slate-100 dark:bg-[#1a2129] text-slate-500 text-xs font-bold uppercase tracking-wider">High</button>
+</div>
+</div>
+<div class="pt-6 border-t border-slate-200 dark:border-[#293038]">
+<h4 class="text-sm font-bold text-slate-900 dark:text-white mb-4">Daily Usage</h4>
+<div class="flex items-end justify-between h-24 gap-1">
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[40%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[55%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t-sm h-[70%]"></div>
+<div class="flex-1 bg-primary rounded-t-sm h-[90%]"></div>
+<div class="flex-1 bg-primary/30 rounded-t-sm h-[50%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-sm h-[30%]"></div>
+<div class="flex-1 bg-slate-200 dark:bg-[#293038] rounded-t-sm h-[10%]"></div>
+</div>
+<div class="flex justify-between mt-2 text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+
+</body></html>

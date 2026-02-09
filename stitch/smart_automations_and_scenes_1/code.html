@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Automations &amp; Scenes | SmartHome Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#197fe6",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#111921",
+                        "surface-dark": "#1c2630",
+                        "border-dark": "#2d3a49",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="border-b border-slate-200 dark:border-border-dark bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-12">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-2xl">home_iot_device</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">SmartHome <span class="text-primary">Pro</span></h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Devices</a>
+<a class="text-sm font-medium text-primary border-b-2 border-primary py-5" href="#">Automations</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Energy</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="bg-slate-100 dark:bg-surface-dark border-none rounded-lg pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Search routines..." type="text"/>
+</div>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-surface-dark rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Avatar of a smiling male user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2Mt-C2kD5BO7jSFayc-aJgLDixukIZiVLuFrVFMjZ0zq24IxdMTB6RsKBfC-cgujtFk1B5DjLkC8ZVcs-EOS1SkrEl4HNZHVsUjMzeXTgejZOTIqVQPGZms3uAjPm1MKxICsd5guLlPjjvVu5diU7memjkZi3mXxyykmtoMGcKrXs05WFTrvuRTrS9thEjt_XYI4vt6p-9tnmfct-bvnjTUc4vRTM5-r-ye_N1j1DZZD6mhI1Jap6vhRkEY7Rr7Ontn3komMGZkE"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-6 py-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h2 class="text-3xl font-bold mb-2">Automations &amp; Scenes</h2>
+<p class="text-slate-500 dark:text-slate-400">Design your home's intelligence with custom rules and triggers.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-slate-100 dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 font-semibold rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">temp_preferences_custom</span>
+<span>Templates</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg shadow-lg shadow-primary/20 transition-all">
+<span class="material-symbols-outlined text-xl">add</span>
+<span>Create New Routine</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Sidebar Navigation -->
+<aside class="lg:col-span-3 flex flex-col gap-6">
+<div class="bg-white dark:bg-surface-dark p-2 rounded-xl border border-slate-200 dark:border-border-dark">
+<button class="w-full flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-lg font-medium">
+<span class="material-symbols-outlined filled-icon">dashboard_customize</span>
+                        Overview
+                    </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors">
+<span class="material-symbols-outlined">schedule</span>
+                        Schedules
+                    </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors">
+<span class="material-symbols-outlined">security</span>
+                        Security Logic
+                    </button>
+<button class="w-full flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg font-medium transition-colors">
+<span class="material-symbols-outlined">analytics</span>
+                        Logic History
+                    </button>
+</div>
+<!-- Recent Activity Card -->
+<div class="bg-white dark:bg-surface-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark">
+<h3 class="font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                        Recent Triggers
+                    </h3>
+<div class="space-y-4">
+<div class="flex gap-3 text-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5"></div>
+<div>
+<p class="font-medium">Good Night Scene</p>
+<p class="text-slate-400">Activated 2h ago</p>
+</div>
+</div>
+<div class="flex gap-3 text-sm">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5"></div>
+<div>
+<p class="font-medium">Motion Detection</p>
+<p class="text-slate-400">Triggered at 11:45 PM</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="lg:col-span-9 space-y-10">
+<!-- Quick Scenes Section -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+                            Quick Scenes
+                        </h3>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+<!-- Scene Card 1 -->
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark group hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">light_mode</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined filled-icon">play_arrow</span>
+</button>
+</div>
+<h4 class="text-lg font-bold mb-1">Good Morning</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">8 devices • Starts coffee, opens shades, set temp to 72°F</p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-[10px] font-bold uppercase tracking-wider">Climate</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-[10px] font-bold uppercase tracking-wider">Lighting</span>
+</div>
+</div>
+<!-- Scene Card 2 -->
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark group hover:border-primary/50 transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">movie</span>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined filled-icon">play_arrow</span>
+</button>
+</div>
+<h4 class="text-lg font-bold mb-1">Movie Night</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">12 devices • Dims lights to 10%, TV on, Soundbar on</p>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-[10px] font-bold uppercase tracking-wider">Entertainment</span>
+</div>
+</div>
+<!-- Scene Card 3 -->
+<div class="bg-white dark:bg-surface-dark p-6 rounded-xl border border-slate-200 dark:border-border-dark group hover:border-primary/50 transition-all relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">bedtime</span>
+</div>
+<div class="flex items-center gap-2 px-2 py-1 bg-primary text-white text-[10px] font-bold rounded-full uppercase">Active</div>
+</div>
+<h4 class="text-lg font-bold mb-1 text-primary">Good Night</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">15 devices • Locks all doors, arm alarm, off all lights</p>
+<button class="w-full py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-bold">Stop Scene</button>
+</div>
+</div>
+</section>
+<!-- Automations Section -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">rule</span>
+                            Active Automations
+                        </h3>
+<div class="flex gap-2">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded border border-slate-200 dark:border-border-dark">
+<span class="material-symbols-outlined text-xl">view_list</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 rounded border border-slate-200 dark:border-border-dark bg-slate-100 dark:bg-slate-800">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Automation Row 1 -->
+<div class="bg-white dark:bg-surface-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-center gap-6 flex-1">
+<div class="hidden sm:flex items-center gap-4 text-slate-300 dark:text-slate-600">
+<div class="text-center">
+<span class="material-symbols-outlined text-3xl">sensors</span>
+<p class="text-[10px] uppercase font-bold">If</p>
+</div>
+<span class="material-symbols-outlined">trending_flat</span>
+<div class="text-center">
+<span class="material-symbols-outlined text-3xl">lightbulb</span>
+<p class="text-[10px] uppercase font-bold">Then</p>
+</div>
+</div>
+<div class="h-10 w-[1px] bg-slate-200 dark:bg-border-dark hidden sm:block"></div>
+<div>
+<h5 class="font-bold">Motion Security Light</h5>
+<p class="text-sm text-slate-500 dark:text-slate-400 italic">"If motion detected at porch between 11PM-5AM, then turn on Porch Light to 100%."</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Last run</p>
+<p class="text-sm font-medium">10m ago</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+<button class="material-symbols-outlined text-slate-400 hover:text-primary">more_vert</button>
+</div>
+</div>
+<!-- Automation Row 2 -->
+<div class="bg-white dark:bg-surface-dark p-5 rounded-xl border border-slate-200 dark:border-border-dark flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-center gap-6 flex-1">
+<div class="hidden sm:flex items-center gap-4 text-slate-300 dark:text-slate-600">
+<div class="text-center">
+<span class="material-symbols-outlined text-3xl">thermostat</span>
+<p class="text-[10px] uppercase font-bold">If</p>
+</div>
+<span class="material-symbols-outlined">trending_flat</span>
+<div class="text-center">
+<span class="material-symbols-outlined text-3xl">ac_unit</span>
+<p class="text-[10px] uppercase font-bold">Then</p>
+</div>
+</div>
+<div class="h-10 w-[1px] bg-slate-200 dark:bg-border-dark hidden sm:block"></div>
+<div>
+<h5 class="font-bold">Eco Temperature Saver</h5>
+<p class="text-sm text-slate-500 dark:text-slate-400 italic">"If indoor temp &gt; 78°F and no one is home, then set AC to 74°F."</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<p class="text-[10px] font-bold text-slate-400 uppercase">Last run</p>
+<p class="text-sm font-medium">Yesterday</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+<button class="material-symbols-outlined text-slate-400 hover:text-primary">more_vert</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Builder Preview Section -->
+<section class="bg-primary/5 border border-primary/20 p-8 rounded-2xl relative">
+<div class="max-w-2xl mx-auto text-center mb-10">
+<h3 class="text-2xl font-bold mb-3">Visual Logic Builder</h3>
+<p class="text-slate-500 dark:text-slate-400">Drag and drop components to create sophisticated routines without writing a single line of code.</p>
+</div>
+<div class="flex flex-wrap justify-center items-center gap-6">
+<!-- Trigger Block -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl shadow-xl border-l-4 border-primary w-48 animate-pulse">
+<div class="flex items-center gap-2 text-primary mb-2">
+<span class="material-symbols-outlined text-sm">bolt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Trigger</span>
+</div>
+<p class="font-bold text-sm">Outdoor Motion</p>
+<p class="text-[10px] text-slate-400">Status: Detected</p>
+</div>
+<span class="material-symbols-outlined text-primary/30 text-4xl hidden md:block">chevron_right</span>
+<!-- Condition Block -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl shadow-xl border-l-4 border-amber-500 w-48">
+<div class="flex items-center gap-2 text-amber-500 mb-2">
+<span class="material-symbols-outlined text-sm">filter_alt</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Condition</span>
+</div>
+<p class="font-bold text-sm">Time is Night</p>
+<p class="text-[10px] text-slate-400">Sunset to Sunrise</p>
+</div>
+<span class="material-symbols-outlined text-primary/30 text-4xl hidden md:block">chevron_right</span>
+<!-- Action Block -->
+<div class="bg-white dark:bg-surface-dark p-4 rounded-xl shadow-xl border-l-4 border-emerald-500 w-48">
+<div class="flex items-center gap-2 text-emerald-500 mb-2">
+<span class="material-symbols-outlined text-sm">play_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Action</span>
+</div>
+<p class="font-bold text-sm">Floodlights ON</p>
+<p class="text-[10px] text-slate-400">Brightness: 100%</p>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<button class="bg-primary px-8 py-3 rounded-xl text-white font-bold hover:scale-105 transition-transform">Open Advanced Builder</button>
+</div>
+<!-- Decorative elements -->
+<div class="absolute top-4 left-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">hub</span>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer Stats -->
+<footer class="mt-12 border-t border-slate-200 dark:border-border-dark bg-slate-50 dark:bg-background-dark py-6">
+<div class="max-w-[1440px] mx-auto px-6 flex flex-wrap justify-between items-center gap-6">
+<div class="flex gap-8">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Total Active</span>
+<span class="text-xl font-bold">24 Routines</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Success Rate</span>
+<span class="text-xl font-bold text-emerald-500">99.8%</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Logic Events</span>
+<span class="text-xl font-bold">1.2k / day</span>
+</div>
+</div>
+<p class="text-sm text-slate-400">System Status: <span class="text-emerald-500 font-bold uppercase text-[10px] ml-1">Optimal</span></p>
+</div>
+</footer>
+</body></html>

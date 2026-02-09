@@ -1,0 +1,47 @@
+// Energy Analytics specific styles
+:root {
+  --primary: #0df259;
+  --background-light: #f5f8f6;
+  --background-dark: #102216;
+  --card-dark: #1a2e21;
+  --border-dark: #28392e;
+}
+
+.chart-gradient {
+  background: linear-gradient(180deg, rgba(13, 242, 89, 0.15) 0%, rgba(13, 242, 89, 0) 100%);
+}
+
+.energy-card {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.tip-card {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: rgba(13, 242, 89, 0.05);
+  }
+}
+
+.stat-card {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.02);
+    background-color: rgba(13, 242, 89, 0.1);
+  }
+}
+
+.period-button {
+  transition: all 0.2s ease;
+}
+
+.donut-chart {
+  transform: rotate(-90deg);
+  transform-origin: center;
+}

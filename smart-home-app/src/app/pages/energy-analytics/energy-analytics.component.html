@@ -1,0 +1,238 @@
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-background-light dark:bg-background-dark">
+  <!-- Header / Navigation -->
+  <header class="flex items-center justify-between border-b border-solid border-slate-200 dark:border-border-dark px-6 py-4 lg:px-10 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+    <div class="flex items-center gap-8">
+      <div class="flex items-center gap-3 text-primary">
+        <div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+          <span class="material-symbols-outlined font-bold">bolt</span>
+        </div>
+        <h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">EcoPulse</h2>
+      </div>
+      <nav class="hidden md:flex items-center gap-6">
+        <a routerLink="/dashboard" class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors">Dashboard</a>
+        <a routerLink="/devices" class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors">Devices</a>
+        <a routerLink="/energy" class="text-primary text-sm font-bold leading-normal flex items-center gap-1">
+          Energy <span class="size-1 bg-primary rounded-full"></span>
+        </a>
+        <a routerLink="/security" class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors">Security</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="hidden sm:flex items-center bg-slate-100 dark:bg-card-dark rounded-lg px-3 py-1.5 border border-slate-200 dark:border-border-dark">
+        <span class="material-symbols-outlined text-slate-400 text-sm">search</span>
+        <input class="bg-transparent border-none focus:ring-0 text-sm w-40 placeholder:text-slate-400" placeholder="Search data..." type="text"/>
+      </div>
+      <button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-card-dark transition-colors">
+        <span class="material-symbols-outlined text-slate-600 dark:text-slate-300">notifications</span>
+      </button>
+      <div class="size-10 rounded-full border-2 border-primary overflow-hidden">
+        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQaXZO4s-_X-5qn8srtTqUqlC0bvJAA9Yw2sxb994YXnTivT9l4WmQgG1cEeevmnRcJOF91O9yD1OkvdDNfpaBuDXyYnvx7LOzdnitqzQfTwm2Y6gwM92t4cUYujoCUkEmE_buEOyACLbld07lUvr36FCZ5enWOiTABBDTgMWzY8hk11XVBrtzDDYHomUy8qmAw6KXAK7rIDWGyS7a4r1ugB1lG4fID-325wA6EIPo81RScftTyqbHK7mAq8hvPItL3zUchBk5xrc"/>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-1 max-w-7xl mx-auto w-full p-4 lg:p-10">
+    <!-- Page Title Area -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+      <div>
+        <h1 class="text-3xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white">Energy & Sustainability</h1>
+        <div class="flex items-center gap-2 mt-2">
+          <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+          <p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">System Status: Optimizing for Grid Load</p>
+        </div>
+      </div>
+      <div class="flex gap-2 bg-slate-100 dark:bg-card-dark p-1 rounded-xl border border-slate-200 dark:border-border-dark">
+        <button (click)="selectPeriod('daily')" 
+                [class]="selectedPeriod === 'daily' ? 'px-4 py-2 text-sm font-medium rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all' : 'px-4 py-2 text-sm font-bold rounded-lg bg-white dark:bg-background-dark text-slate-900 dark:text-white shadow-sm transition-all border border-slate-200 dark:border-border-dark'">
+          Daily
+        </button>
+        <button (click)="selectPeriod('weekly')" 
+                [class]="selectedPeriod === 'weekly' ? 'px-4 py-2 text-sm font-bold rounded-lg bg-white dark:bg-background-dark text-slate-900 dark:text-white shadow-sm transition-all border border-slate-200 dark:border-border-dark' : 'px-4 py-2 text-sm font-medium rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all'">
+          Weekly
+        </button>
+        <button (click)="selectPeriod('monthly')" 
+                [class]="selectedPeriod === 'monthly' ? 'px-4 py-2 text-sm font-medium rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all' : 'px-4 py-2 text-sm font-bold rounded-lg bg-white dark:bg-background-dark text-slate-900 dark:text-white shadow-sm transition-all border border-slate-200 dark:border-border-dark'">
+          Monthly
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <!-- Main Chart Container -->
+      <div class="lg:col-span-3 flex flex-col gap-6">
+        <div class="bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-border-dark p-6 shadow-sm overflow-hidden">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <h3 class="text-lg font-bold">Energy Usage vs. Storage</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Net consumption tracking for current week</p>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="flex items-center gap-2">
+                <span class="size-3 rounded-full bg-primary"></span>
+                <span class="text-xs font-medium text-slate-500">Solar Gen</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="size-3 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+                <span class="text-xs font-medium text-slate-500">Grid Load</span>
+              </div>
+              <button class="flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-background-dark border border-slate-200 dark:border-border-dark rounded-lg text-xs font-bold hover:bg-slate-200 dark:hover:bg-primary/10 transition-colors">
+                <span class="material-symbols-outlined text-sm">download</span> Export
+              </button>
+            </div>
+          </div>
+          
+          <!-- Chart Area -->
+          <div class="relative h-[320px] w-full mt-4">
+            <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 300">
+              <!-- Grid Lines -->
+              <line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0" x2="1000" y1="50" y2="50"></line>
+              <line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+              <line class="text-slate-100 dark:text-slate-800" stroke="currentColor" stroke-width="1" x1="0" x2="1000" y1="250" y2="250"></line>
+              
+              <!-- Area Gradient (Storage/Solar) -->
+              <defs>
+                <linearGradient id="chartFill" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#0df259" stop-opacity="0.6"></stop>
+                  <stop offset="100%" stop-color="#0df259" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              
+              <!-- Solar Area -->
+              <path d="M0,250 L100,220 L200,240 L300,100 L400,80 L500,120 L600,60 L700,40 L800,130 L900,150 L1000,140 L1000,300 L0,300 Z" 
+                    fill="url(#chartFill)" opacity="0.4"></path>
+              
+              <!-- Solar Line (Primary) -->
+              <polyline fill="none" points="0,250 100,220 200,240 300,100 400,80 500,120 600,60 700,40 800,130 900,150 1000,140" 
+                        stroke="#0df259" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></polyline>
+              
+              <!-- Consumption Line (Dashed) -->
+              <polyline fill="none" points="0,200 100,190 200,170 300,180 400,190 500,160 600,140 700,130 800,120 900,110 1000,100" 
+                        stroke="#64748b" stroke-dasharray="8,4" stroke-width="2"></polyline>
+            </svg>
+            
+            <div class="flex justify-between mt-4 px-2">
+              <span *ngFor="let data of weeklyData" class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{{ data.day }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Cost Savings Card -->
+          <div class="bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-border-dark p-6 shadow-sm">
+            <div class="flex items-center justify-between mb-4">
+              <div class="size-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined font-bold">payments</span>
+              </div>
+              <span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded">+14.2% vs last week</span>
+            </div>
+            <h4 class="text-slate-500 dark:text-slate-400 text-sm font-medium">Estimated Cost Savings</h4>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-4xl font-black text-slate-900 dark:text-white tracking-tight">${{ costSavings }}</span>
+              <span class="text-slate-400 text-sm font-medium">USD</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-4 leading-relaxed">Your solar panel output has significantly reduced grid dependency during peak hours this week.</p>
+          </div>
+
+          <!-- Energy Source Card -->
+          <div class="bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-border-dark p-6 shadow-sm">
+            <h4 class="text-slate-900 dark:text-white text-lg font-bold mb-4">Energy Mix Split</h4>
+            <div class="flex items-center gap-8">
+              <div class="relative size-24 flex items-center justify-center">
+                <!-- Donut Chart -->
+                <svg class="size-full transform -rotate-90" viewBox="0 0 36 36">
+                  <circle class="stroke-slate-100 dark:stroke-border-dark" cx="18" cy="18" fill="none" r="16" stroke-width="4"></circle>
+                  <circle class="stroke-primary" cx="18" cy="18" fill="none" r="16" [attr.stroke-dasharray]="solarPercentage + ', 100'" stroke-width="4"></circle>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                  <span class="text-xl font-black">{{ solarPercentage }}%</span>
+                  <span class="text-[8px] font-bold uppercase text-slate-400 tracking-tighter">Solar</span>
+                </div>
+              </div>
+              <div class="flex-1 space-y-3">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="size-2 rounded-full bg-primary"></span>
+                    <span class="text-sm font-medium">Solar Gen</span>
+                  </div>
+                  <span class="text-sm font-bold">{{ solarGeneration }} kWh</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="size-2 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+                    <span class="text-sm font-medium">Grid Load</span>
+                  </div>
+                  <span class="text-sm font-bold">{{ gridLoad }} kWh</span>
+                </div>
+                <div class="h-1.5 w-full bg-slate-100 dark:bg-background-dark rounded-full overflow-hidden mt-2">
+                  <div class="h-full bg-primary" [style.width.%]="solarPercentage"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Tips/Efficiency -->
+      <div class="lg:col-span-1 flex flex-col gap-6">
+        <!-- Real Time Load -->
+        <div class="bg-primary dark:bg-primary text-background-dark rounded-2xl p-6 shadow-lg shadow-primary/20">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase tracking-widest opacity-70">Current Load</span>
+            <span class="material-symbols-outlined text-xl">speed</span>
+          </div>
+          <div class="flex items-baseline gap-1">
+            <span class="text-4xl font-black tracking-tighter">{{ currentLoad }}</span>
+            <span class="text-lg font-bold">kW</span>
+          </div>
+          <div class="mt-6 flex flex-col gap-3">
+            <div class="flex items-center justify-between text-xs font-bold border-t border-background-dark/10 pt-3">
+              <span>Voltage</span>
+              <span>{{ voltage }} V</span>
+            </div>
+            <div class="flex items-center justify-between text-xs font-bold">
+              <span>Battery</span>
+              <span>{{ batteryLevel }}%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Optimization Tips -->
+        <div class="bg-white dark:bg-card-dark rounded-2xl border border-slate-200 dark:border-border-dark p-6 shadow-sm flex-1">
+          <div class="flex items-center gap-2 mb-6">
+            <span class="material-symbols-outlined text-primary">lightbulb</span>
+            <h3 class="text-lg font-bold">Efficiency Tips</h3>
+          </div>
+          <div class="space-y-6">
+            <div *ngFor="let tip of efficiencyTips" class="group cursor-pointer">
+              <div class="flex items-start gap-4">
+                <div class="size-8 rounded-lg bg-slate-100 dark:bg-background-dark flex items-center justify-center shrink-0 border border-slate-200 dark:border-border-dark group-hover:bg-primary/10 group-hover:border-primary/50 transition-colors">
+                  <span class="material-symbols-outlined text-lg text-slate-500 group-hover:text-primary transition-colors">{{ tip.icon }}</span>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold leading-tight group-hover:text-primary transition-colors">{{ tip.title }}</h5>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">{{ tip.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="w-full mt-8 py-3 bg-slate-100 dark:bg-background-dark hover:bg-primary/10 hover:text-primary border border-slate-200 dark:border-border-dark rounded-xl text-xs font-bold uppercase tracking-widest transition-all">
+            View All Insight Reports
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section / Quick Stats -->
+    <footer class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div *ngFor="let stat of quickStats" class="bg-white/50 dark:bg-card-dark/50 rounded-xl p-4 border border-slate-200 dark:border-border-dark flex items-center gap-4">
+        <span class="material-symbols-outlined text-primary opacity-60">{{ stat.icon }}</span>
+        <div>
+          <p class="text-[10px] uppercase font-bold text-slate-400 tracking-tighter">{{ stat.label }}</p>
+          <p class="text-lg font-bold">{{ stat.value }}</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+</div>
