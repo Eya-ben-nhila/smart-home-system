@@ -269,3 +269,7 @@ This project is licensed under the MIT License.
 - Material Design icons and components
 - Tailwind CSS for styling
 - Angular and Spring Boot frameworks
+=======
+# smart-home-system
+Complete Smart Home Management System with Angular &amp; Spring Boot
+>>>>>>> 75f76c969f9055711a2dba96f607510eb0e545b1
